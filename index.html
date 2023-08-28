@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Lit HTML Component</title>
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <script src="https://unpkg.com/lit-html?module"></script>
+</head>
+
+<body>
+    <h1>My Lit HTML Component</h1>
+    <my-component></my-component>
+
+
+    <hr>
+
+
+    <h1>My Material Design Component</h1>
+    <p>This button was created using Material Design Components for the Web</p>
+    <p>As a side note, all Material Design Web Components were written using Lit under the covers, just like the web component above.</p>
+    <p>Go ahead, click it. You'll see a nice ripple effect.</p>
+    
+    <button class="mdc-button foo-button">
+        <div class="mdc-button__ripple"></div>
+        <span class="mdc-button__label">Button</span>
+    </button>
+
+    <h4>More notes about this button:</h4>
+    <p>This button was deployed to this page using un-natural acts :) </p>
+    <p>A front end coder would not deploy such a page without using build tools, npm dependencies, and the like. So some
+        of the code used to deploy this Material Design component is weird stuff you wouldn't see in a normal usage.
+        Mainly, this line `mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));` WUT?</p>
+    <p>The win? You get to see it all in one html page with no other js, css or other files to confuse you.</p>
+    
+    
+    <!-- scripts placed in a body are usually placed at the bottom of the page to improve page load time -->
+    <script type="module">
+        import { LitElement, html, css } from 'https://unpkg.com/lit-element/lit-element.js?module';
+        //Is this the whole code for making a web component with lit? Yup. 
+        //Now you have a <my-component> you can consume in your web page.
+        class MyComponent extends LitElement {
+            render() {
+                return html`<h3>I am a Web Component named &#60;my-component&gt;</h3>`;
+            }
+        }
+
+        // Register the component
+        customElements.define('my-component', MyComponent);
+    </script>
+    <script type="module">
+        // this would never be done in a real app, just required for this demo to work using dependencies from a CDN
+        mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
+    </script>
+</body>
+
+</html>
